@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LoginActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
@@ -17,11 +19,12 @@ public class LoginActivity extends AppCompatActivity {
     private Button bSignIn , bSignUp;
     private CheckBox cbRemember;
     private final String EMPTY_OR_MISSING_SP = "";
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mAuth = FirebaseAuth.getInstance();
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
 
