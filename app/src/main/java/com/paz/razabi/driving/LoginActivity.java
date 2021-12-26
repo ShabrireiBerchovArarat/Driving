@@ -87,15 +87,12 @@ public class LoginActivity extends AppCompatActivity {
         mEditor.apply();
 
         mAuth.createUserWithEmailAndPassword(etEmail.getText().toString() , etPassword.getText().toString())
-        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    startActivity(new Intent(LoginActivity.this , HomeActivity.class));
-                }
-                else{
-                    Toast.makeText(LoginActivity.this , "Sign Up Failed" , Toast.LENGTH_LONG).show();
-                }
+        .addOnCompleteListener(LoginActivity.this, task -> {
+            if(task.isSuccessful()){
+                startActivity(new Intent(LoginActivity.this , HomeActivity.class));
+            }
+            else{
+                Toast.makeText(LoginActivity.this , "Sign Up Failed" , Toast.LENGTH_LONG).show();
             }
         });
 
