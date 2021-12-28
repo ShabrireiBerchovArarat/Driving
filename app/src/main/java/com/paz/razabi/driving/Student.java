@@ -7,6 +7,7 @@ public class Student {
     private String address;
     private String phone;
     private int lessonCount;
+    private int unpaidLessonCount;
 
 
     public String getfName() {
@@ -56,6 +57,7 @@ public class Student {
         this.address = address;
         this.phone = phone;
         this.lessonCount = 0;
+        this.unpaidLessonCount = 0;
     }
     @Override
     public String toString() {
