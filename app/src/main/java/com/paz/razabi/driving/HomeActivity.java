@@ -19,4 +19,12 @@ public class HomeActivity extends HomeMenuTemplateActivity {
     public void sLesson(View view) {
         startActivity(new Intent(HomeActivity.this , ScheduleActivity.class));
     }
+
+    public void lList(View view) {
+        startActivity(new Intent(HomeActivity.this , LessonsListActivity.class));
+    }
+
+    public void addStudent(View view) {
+        startActivity(new Intent(HomeActivity.this , AddStudentActivity.class));
+    }
 }

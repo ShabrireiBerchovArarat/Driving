@@ -1,8 +1,7 @@
 package com.paz.razabi.driving;
 
 public class Student {
-    private String fName;
-    private String lName;
+    private String Name;
     private String id;
     private String address;
     private String phone;
@@ -10,20 +9,12 @@ public class Student {
     private int unpaidLessonCount;
 
 
-    public String getfName() {
-        return fName;
+    public String getName() {
+        return Name;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
-    }
-
-    public String getlName() {
-        return lName;
-    }
-
-    public void setlName(String lName) {
-        this.lName = lName;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getId() {
@@ -50,9 +41,8 @@ public class Student {
         this.phone = phone;
     }
 
-    public Student(String fName, String lName, String id, String address, String phone) {
-        this.fName = fName;
-        this.lName = lName;
+    public Student(String Name, String id, String address, String phone) {
+        this.Name = Name;
         this.id = id;
         this.address = address;
         this.phone = phone;
@@ -62,8 +52,7 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "fName='" + fName + '\'' +
-                ", lName='" + lName + '\'' +
+                "Name='" + Name + '\'' +
                 ", id='" + id + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
