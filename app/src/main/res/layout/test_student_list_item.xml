@@ -15,9 +15,9 @@
         android:text="Name:"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintBottom_toBottomOf="@+id/nameTxt"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView18"
+        app:layout_constraintTop_toTopOf="@+id/nameTxt"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -28,10 +28,10 @@
         android:text="Phone #:"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView28"
+        app:layout_constraintBottom_toBottomOf="@+id/phoneTxt"
         app:layout_constraintStart_toStartOf="@+id/textView21"
-        app:layout_constraintTop_toTopOf="@+id/textView28"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/phoneTxt"
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/textView21"
@@ -40,43 +40,40 @@
         android:fontFamily="@font/bad_script"
         android:text="ID:"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintBottom_toBottomOf="@+id/idTxt"
         app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toTopOf="@+id/textView22"
+        app:layout_constraintTop_toTopOf="@+id/idTxt"
         app:layout_constraintVertical_bias="0.571" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/nameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Meira Greeeeen"
         android:textSize="10sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="88dp" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/idTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="999999999"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintEnd_toEndOf="@+id/nameTxt"
+        app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/phoneTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="0584568468"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView22"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintEnd_toEndOf="@+id/idTxt"
+        app:layout_constraintTop_toBottomOf="@+id/idTxt" />
 
     <TextView
         android:id="@+id/textView29"
@@ -87,25 +84,24 @@
         android:text="Unpaid lessons:"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView30"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintBottom_toBottomOf="@+id/uplTxt"
+        app:layout_constraintStart_toEndOf="@+id/nameTxt"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView30"
+        android:id="@+id/uplTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="12"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/addTxt"
         android:layout_width="111dp"
         android:layout_height="57dp"
         android:layout_marginTop="8dp"
@@ -113,10 +109,9 @@
         android:width="107dp"
         android:height="89dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Ha'kishon 23, Beit Shemesh, Jerusalem district, Israel, The Middle East."
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+        app:layout_constraintTop_toBottomOf="@+id/ldTxt" />
 
     <TextView
         android:id="@+id/textView31"
@@ -127,9 +122,9 @@
         android:text="Lessons done:"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView32"
-        app:layout_constraintStart_toEndOf="@+id/textView22"
-        app:layout_constraintTop_toTopOf="@+id/textView32"
+        app:layout_constraintBottom_toBottomOf="@+id/ldTxt"
+        app:layout_constraintStart_toEndOf="@+id/idTxt"
+        app:layout_constraintTop_toTopOf="@+id/ldTxt"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -141,22 +136,21 @@
         android:text="Address:"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView34"
-        app:layout_constraintStart_toEndOf="@+id/textView28"
-        app:layout_constraintTop_toTopOf="@+id/textView34"
+        app:layout_constraintBottom_toBottomOf="@+id/addTxt"
+        app:layout_constraintStart_toEndOf="@+id/phoneTxt"
+        app:layout_constraintTop_toTopOf="@+id/addTxt"
         app:layout_constraintVertical_bias="0.424" />
 
     <TextView
-        android:id="@+id/textView32"
+        android:id="@+id/ldTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="26"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+        app:layout_constraintTop_toBottomOf="@+id/uplTxt" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
