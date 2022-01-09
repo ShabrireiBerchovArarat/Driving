@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder> {
     private ArrayList<Student> studentList;
-
     public recyclerAdapter(ArrayList<Student> studentList){
         this.studentList = studentList;
     }
