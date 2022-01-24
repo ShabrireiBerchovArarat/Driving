@@ -6,7 +6,6 @@ public class Lesson {
     private Date lDate;
     private Student student;
     private boolean isPaid;
-    private boolean isOver;
 
     public Lesson(Date lDate, Student student) {
         this.lDate = lDate;
