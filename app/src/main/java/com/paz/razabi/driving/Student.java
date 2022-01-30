@@ -50,6 +50,13 @@ public class Student {
         this.unpaidLessonCount = 0;
     }
 
+    public int getLessonCount() {
+        return lessonCount;
+    }
+
+    public int getUnpaidLessonCount() {
+        return unpaidLessonCount;
+    }
 
     @Override
     public String toString() {

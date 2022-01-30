@@ -40,7 +40,7 @@
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="121dp"
         android:layout_height="49dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="140dp"
         android:ems="10"
         android:fontFamily="@font/bad_script"
         android:hint="ID:"
@@ -52,21 +52,6 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="121dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="70dp"
-        android:ems="10"
-        android:fontFamily="@font/bad_script"
-        android:hint="Phone:"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName6"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
-
-    <EditText
         android:id="@+id/editTextTextPersonName4"
         android:layout_width="121dp"
         android:layout_height="49dp"
@@ -75,6 +60,7 @@
         android:layout_marginBottom="278dp"
         android:ems="10"
         android:fontFamily="@font/bad_script"
+        android:hint="Phone:"
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/bSignUp"
@@ -86,25 +72,14 @@
         android:id="@+id/editTextTextPersonName5"
         android:layout_width="121dp"
         android:layout_height="49dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="140dp"
         android:ems="10"
         android:fontFamily="@font/bad_script"
+        android:hint="Address:"
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName6"
-        android:layout_width="121dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="70dp"
-        android:ems="10"
-        android:fontFamily="@font/bad_script"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName5"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
 
     <Button
         android:id="@+id/bSignUp"
@@ -115,7 +90,6 @@
         android:fontFamily="@font/roboto_mono"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName6"
-        app:layout_constraintHorizontal_bias="0.733"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName5"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
