@@ -34,11 +34,14 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
             addTxt = view.findViewById(R.id.addTxt);
         }
     }
+
     @NonNull
     @Override
     public recyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_student_list, parent, false);
-        return new MyViewHolder(itemView);
+//        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_student_list, parent, false);
+//        return new MyViewHolder(itemView);
+
+        return new MyViewHolder(parent);
     }
 
     @Override
@@ -49,6 +52,7 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
         String upL = Integer.toString(studentList.get(position).getUnpaidLessonCount());
         String ld = Integer.toString(studentList.get(position).getLessonCount());
         String add = studentList.get(position).getName();
+
         holder.nameTxt.setText(name);
         holder.idTxt.setText(id);
         holder.phoneTxt.setText(phone);

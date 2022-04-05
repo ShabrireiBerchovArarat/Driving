@@ -36,11 +36,11 @@ public class StudentListActivity extends AppCompatActivity {
         studentList = new ArrayList<Student>();
         recyclerAdapter = new recyclerAdapter( studentList);
 
-        EventChangeListener();
+//        EventChangeListener();
     }
 
-    private void EventChangeListener() {
-        db.collection()
-    }
+//    private void EventChangeListener() {
+//        db.collection()
+//    }
 
 }

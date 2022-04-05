@@ -49,11 +49,12 @@
         android:id="@+id/nameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_medium"
         android:textSize="10sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="88dp" />
+        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/idTxt"
@@ -79,7 +80,7 @@
         android:id="@+id/textView29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="24dp"
         android:fontFamily="@font/bad_script"
         android:text="Unpaid lessons:"
         android:textColor="@color/black"
@@ -87,7 +88,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/uplTxt"
         app:layout_constraintStart_toEndOf="@+id/nameTxt"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/uplTxt"
