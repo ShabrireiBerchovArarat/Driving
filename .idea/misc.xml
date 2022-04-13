@@ -3,14 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/activity_add_student.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/activity_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/activity_login2.xml" value="0.28306159420289856" />
         <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/activity_schedule.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/activity_student_list.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/list_item.xml" value="1.0" />
-        <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/test_student_list_item.xml" value="0.9" />
+        <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/list_item.xml" value="0.75" />
+        <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/layout/test_student_list_item.xml" value="0.67" />
         <entry key="..\:/Users/Student08/AndroidStudioProjects/Driving/app/src/main/res/menu/home_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/pazra/StudioProjects/Driving/app/src/main/res/layout/activity_add_student.xml" value="0.19157608695652173" />
         <entry key="..\:/Users/pazra/StudioProjects/Driving/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
