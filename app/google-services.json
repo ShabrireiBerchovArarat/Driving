@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "719148665284",
+    "project_id": "driving-cda14",
+    "storage_bucket": "driving-cda14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719148665284:android:9ce980b09fce2b3c6a7c91",
+        "android_client_info": {
+          "package_name": "com.paz.razabi.driving"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719148665284-l2m6qtl6jh9fk6hhilskr8sdoj0o5co2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKsKITJXcndwm7lqz1h53n36M2a8PhaHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719148665284-l2m6qtl6jh9fk6hhilskr8sdoj0o5co2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

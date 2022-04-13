@@ -7,6 +7,8 @@ public class Student {
     private String phone;
     private int lessonCount;
     private int unpaidLessonCount;
+    private String teacher;
+
 
 
     public String getName() {
@@ -41,15 +43,6 @@ public class Student {
         this.phone = phone;
     }
 
-    public Student(String Name, String id, String address, String phone) {
-        this.Name = Name;
-        this.id = id;
-        this.address = address;
-        this.phone = phone;
-        this.lessonCount = 0;
-        this.unpaidLessonCount = 0;
-    }
-
     public int getLessonCount() {
         return lessonCount;
     }
@@ -65,6 +58,35 @@ public class Student {
     public void setUnpaidLessonCount(int unpaidLessonCount) {
         this.unpaidLessonCount = unpaidLessonCount;
     }
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
+
+
+    public Student() {
+        this.Name = null;
+        this.id = null;
+        this.address = null;
+        this.phone = null;
+        this.lessonCount = 0;
+        this.unpaidLessonCount = 0;
+        this.teacher = null;
+    }
+    public Student(Student student){
+        this.Name = student.getName();
+        this.id = student.getId();
+        this.phone = student.getPhone();
+        this.address = student.getAddress();
+        this.lessonCount = student.getLessonCount();
+        this.unpaidLessonCount = student.getUnpaidLessonCount();
+        this.teacher = student.getTeacher();
+    }
+
+
 
     @Override
     public String toString() {

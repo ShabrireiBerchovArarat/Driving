@@ -1,39 +1,62 @@
 package com.paz.razabi.driving;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class StudentListActivity extends AppCompatActivity {
-    private ArrayList<Student> studentList;
     private RecyclerView recyclerView;
-
+    String masterName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
+//        if(savedInstanceState == null) {
+//            Bundle extras = getIntent().getExtras();
+//            if (extras == null) {
+//                masterName = null;
+//            } else {
+//                masterName = extras.getString("STRING_I_NEED");
+//            }
+//        }else {
+//                masterName = (String) savedInstanceState.getSerializable("STRING_I_NEED");
+//            }
+        masterName = Globals.currTeacher;
         recyclerView = findViewById(R.id.slRecyclerView);
-        studentList = new ArrayList<>();
+        new FirebaseDBHelper().readStudents(new FirebaseDBHelper.DataStatus() {
+        @Override
+        public void DataIsLoaded (List < Student > students, List < String > keys){
+            findViewById(R.id.loadStPb).setVisibility(View.GONE);
+            new RecyclerView_Config().setConfig(recyclerView, StudentListActivity.this, students, keys);
+
+        }
 
 
-        setStudentInfo();
-        setAdapter();
-    }
 
-    private void setAdapter() {
-        recyclerAdapter adapter = new recyclerAdapter(studentList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
-    }
+            @Override
+            public void DataIsInserted() {
 
-    private void setStudentInfo() {
+            }
 
-    }
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        }, masterName);
+
+
+
+
+
+
+}
 }

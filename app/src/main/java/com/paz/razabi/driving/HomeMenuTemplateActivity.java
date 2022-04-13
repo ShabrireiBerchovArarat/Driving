@@ -23,6 +23,7 @@ public class HomeMenuTemplateActivity extends AppCompatActivity {
 
         if (itemID == R.id.opLogout) {
             FirebaseAuth.getInstance().signOut();
+            Globals.firstEnter = true;
             startActivity(new Intent(this , LoginActivity.class));
         }
 

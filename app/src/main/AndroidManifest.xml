@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Driving">
         <activity
+            android:name=".LessonDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".StudentDetailsActivity"
+            android:exported="true" />
+        <activity
             android:name=".LessonsListActivity"
             android:exported="true" />
         <activity

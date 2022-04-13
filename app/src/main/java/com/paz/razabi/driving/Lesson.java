@@ -2,27 +2,35 @@ package com.paz.razabi.driving;
 
 import java.util.Date;
 
-public class Lesson {
-    private Date lDate;
+public class Lesson{
     private Student student;
-    private boolean isPaid;
-    private boolean isOver;
+    private String date;
 
-    public Lesson(Date lDate, Student student) {
-        this.lDate = lDate;
-        this.student = student;
+
+    public String getDate() {
+        return date;
     }
 
-    public Date getlDate() {
-        return lDate;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public void setlDate(Date lDate) {
-        this.lDate = lDate;
+    @Override
+    public String toString() {
+        return "Lesson{" +
+                "student=" + student +
+                ", date='" + date + '\'' +
+                '}';
     }
+
+    public Lesson() {
+        this.date = null;
+        this.student = null;
+    }
+
 
     public Student getStudent() {
-        return student;
+        return this.student;
     }
 
     public void setStudent(Student student) {
