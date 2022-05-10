@@ -57,8 +57,8 @@ public class FirebaseDBHelper {
         });
     }
     public void addStudent(Student student , final DataStatus dataStatus){
-       String key = mRefrenceStudents.push().getKey();
-       mRefrenceStudents.child(key).setValue(student)
+       String path = mRefrenceStudents.push().getKey();
+       mRefrenceStudents.child(path).setValue(student)
                .addOnSuccessListener(new OnSuccessListener<Void>() {
                    @Override
                    public void onSuccess(Void unused) {

@@ -29,7 +29,7 @@ public class StudentListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.slRecyclerView);
         new FirebaseDBHelper().readStudents(new FirebaseDBHelper.DataStatus() {
         @Override
-        public void DataIsLoaded (List < Student > students, List < String > keys){
+        public void DataIsLoaded (List <Student> students, List <String> keys){
             findViewById(R.id.loadStPb).setVisibility(View.GONE);
             new RecyclerView_Config().setConfig(recyclerView, StudentListActivity.this, students, keys);
 

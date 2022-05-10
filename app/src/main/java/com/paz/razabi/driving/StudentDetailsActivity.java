@@ -78,9 +78,8 @@ public class StudentDetailsActivity extends AppCompatActivity {
 
                     }
                 });
+                RecordCoordinator.coordinateLessonRecords(student);
                 Intent i = new Intent(StudentDetailsActivity.this , HomeActivity.class);
-//                i.putExtra("INT_I_NEED", c1);
-//                i.putExtra("STRING_I_NEED", teacher);
                 startActivity(i);
             }
         });

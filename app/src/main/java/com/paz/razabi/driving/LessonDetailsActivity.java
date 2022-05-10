@@ -45,35 +45,32 @@ public class LessonDetailsActivity extends AppCompatActivity {
         builder2 = new AlertDialog.Builder(LessonDetailsActivity.this);
         builder1.setTitle("Delete")
                 .setMessage("Is The Lesson Over?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        databaseReference2 = FirebaseDatabase.getInstance().getReference();
-                        databaseReference2.child("students").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                .setPositiveButton("Yes", (dialogInterface, i) -> {
+                    databaseReference2 = FirebaseDatabase.getInstance().getReference();
+                    databaseReference2.child("students").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                for (DataSnapshot childSnapshot2 : snapshot.getChildren()) {
-                                    Student student = childSnapshot2.getValue(Student.class);
-                                    Log.i("BBB", student.getName() + " ," + new_sp.getSelectedItem().toString());
-                                    if (student.getTeacher().equals(Globals.currTeacher)){
-                                        if (student.getName().equals(new_sp.getSelectedItem().toString())) {
-                                            Log.i("BBB", student.toString());
-                                            student.setLessonCount((student.getLessonCount() + 1));
-                                            builder2.show();
-                                        }
+                            for (DataSnapshot childSnapshot2 : snapshot.getChildren()) {
+                                Student student = childSnapshot2.getValue(Student.class);
+                                Log.i("BBB", student.getName() + " ," + new_sp.getSelectedItem().toString());
+                                if (student.getTeacher().equals(Globals.currTeacher)){
+                                    if (student.getName().equals(new_sp.getSelectedItem().toString())) {
+                                        Log.i("BBB", student.toString());
+                                        student.setLessonCount((student.getLessonCount() + 1));
+                                        builder2.show();
                                     }
                                 }
                             }
+                        }
 
 
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                            }
-                        });
-                    }
+                        }
+                    });
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
@@ -261,6 +258,7 @@ public class LessonDetailsActivity extends AppCompatActivity {
 
                                         }
                                     });
+                                    RecordCoordinator.coordinateStudentRecords(lesson.getStudent());
                                     Intent i = new Intent(LessonDetailsActivity.this, HomeActivity.class);
                                     startActivity(i);
                                 }
