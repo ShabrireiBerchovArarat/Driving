@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,16 +49,15 @@ public class ScheduleActivity extends AppCompatActivity {
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     Student student = childSnapshot.getValue(Student.class);
                     String spinnerName;
-                    if (student.getTeacher().equals(Globals.currTeacher)){
+                    if (student.getTeacher().equals(Globals.currTeacher)) {
                         spinnerName = student.getName();
                         names.add(spinnerName);
+                    }
                 }
-            }
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(ScheduleActivity.this, android.R.layout.simple_spinner_dropdown_item, names);
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(arrayAdapter);
             }
-
 
 
             @Override
@@ -78,11 +78,24 @@ public class ScheduleActivity extends AppCompatActivity {
                         for (DataSnapshot childSnapshot2 : snapshot.getChildren()) {
                             Student student = childSnapshot2.getValue(Student.class);
                             Log.i("BBB", student.getName() + " ," + spinner.getSelectedItem().toString());
-                            if (student.getTeacher().equals(Globals.currTeacher)){
+                            if (student.getTeacher().equals(Globals.currTeacher)) {
                                 if (student.getName().equals(spinner.getSelectedItem().toString())) {
                                     Log.i("BBB", student.toString());
                                     lesson.setStudent(student);
                                     lesson.setDate(etDay.getText().toString() + "/" + etMonth.getText().toString() + " , " + etHour.getText().toString());
+                                    StringBuilder url = new StringBuilder();
+                                    url.append("https://wa.me/");
+                                    url.append(Formatting.formatPhone(lesson.getStudent().getPhone()));
+                                    url.append("?text=");
+                                    url.append(Formatting.encodeValue("New Lesson Has Been Scheduled For "));
+                                    url.append(Formatting.encodeValue(lesson.getDate()));
+
+                                    Uri uri = Uri.parse(url.toString());
+                                    Intent send = new Intent(Intent.ACTION_VIEW, uri);
+
+                                    startActivity(send);
+                                    Log.i("LINK", url.toString());
+
                                     new LessFirebaseDBHelper().addLesson(lesson, new LessFirebaseDBHelper.LessDataStatus() {
                                         @Override
                                         public void LessDataIsLoaded(List<Lesson> lessons, List<String> keys) {
@@ -92,8 +105,6 @@ public class ScheduleActivity extends AppCompatActivity {
                                         @Override
                                         public void LessDataIsInserted() {
                                             Toast.makeText(ScheduleActivity.this, "The Lesson Has Been Inserted Successfully", Toast.LENGTH_SHORT).show();
-
-
                                         }
 
                                         @Override
@@ -109,10 +120,9 @@ public class ScheduleActivity extends AppCompatActivity {
                                     Intent i = new Intent(ScheduleActivity.this, HomeActivity.class);
                                     startActivity(i);
                                 }
-                        }
+                            }
                         }
                     }
-
 
 
                     @Override
