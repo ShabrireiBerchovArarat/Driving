@@ -15,24 +15,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LessFirebaseDBHelper {
+    // step_2
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRefrenceLessons;
     private List<Lesson> lessons = new ArrayList<>();
 
-
+    //step_4
     public interface LessDataStatus{
         void LessDataIsLoaded(List<Lesson> lessons, List<String> keys);
         void LessDataIsInserted();
         void LessDataIsUpdated();
         void LessDataIsDeleted();
     }
-
+    // step_3
     public LessFirebaseDBHelper() {
         mDatabase = FirebaseDatabase.getInstance();
         mRefrenceLessons = mDatabase.getReference("lessons");
     }
-
-
+    // step_5
     public void readLessons(LessFirebaseDBHelper.LessDataStatus dataStatus, String str){
         mRefrenceLessons.addValueEventListener(new ValueEventListener() {
             @Override
