@@ -18,34 +18,34 @@ public class RecyclerView_Config {
     // step_7
     private Context mContext;
     private StudentsAdapter mStudentAdapters;
+
     // step_8
-    public void setConfig(RecyclerView recyclerView, Context context,List<Student> students,List<String> keys)
-    {
+    public void setConfig(RecyclerView recyclerView, Context context, List<Student> students, List<String> keys) {
         mContext = context;
-        mStudentAdapters =new StudentsAdapter(students,keys);
+        mStudentAdapters = new StudentsAdapter(students, keys);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(mStudentAdapters);
-
     }
+
     // step_9
-    class StudentItemView extends RecyclerView.ViewHolder{
+    class StudentItemView extends RecyclerView.ViewHolder {
         private TextView mName;
-        private TextView mID ;
+        private TextView mID;
         private TextView mPhone;
         private TextView mAdress;
         private TextView mLC;
         private TextView mUL;
-        private String key ;
+        private String key;
 
-        public StudentItemView(ViewGroup parent){
+        public StudentItemView(ViewGroup parent) {
             super(LayoutInflater.from(mContext).
-                    inflate(R.layout.list_item,parent,false));
-            mName = (TextView)itemView.findViewById(R.id.tvName);
-            mID = (TextView)itemView.findViewById(R.id.tvLC);
-            mPhone = (TextView)itemView.findViewById(R.id.tvPhone);
-            mAdress = (TextView)itemView.findViewById(R.id.tvUL);
-            mLC = (TextView)itemView.findViewById(R.id.tvID);
-            mUL = (TextView)itemView.findViewById(R.id.tvAddress);
+                    inflate(R.layout.list_item, parent, false));
+            mName = (TextView) itemView.findViewById(R.id.tvName);
+            mID = (TextView) itemView.findViewById(R.id.tvLC);
+            mPhone = (TextView) itemView.findViewById(R.id.tvPhone);
+            mAdress = (TextView) itemView.findViewById(R.id.tvUL);
+            mLC = (TextView) itemView.findViewById(R.id.tvID);
+            mUL = (TextView) itemView.findViewById(R.id.tvAddress);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -64,25 +64,29 @@ public class RecyclerView_Config {
             });
 
         }
-        public void bind(Student student,String key){
+
+        public void bind(Student student, String key) {
             mName.setText(student.getName());
             mID.setText(student.getId());
             mPhone.setText(student.getPhone());
             mAdress.setText(student.getAddress());
             mLC.setText("" + student.getLessonCount());
             mUL.setText("" + student.getUnpaidLessonCount());
-            this.key=key;
+            this.key = key;
         }
 
     }
+
     // step_10
-    class StudentsAdapter extends RecyclerView.Adapter<StudentItemView>{
+    class StudentsAdapter extends RecyclerView.Adapter<StudentItemView> {
         private List<Student> mStudentList;
         private List<String> mKeys;
-        public StudentsAdapter( List<Student> mStudentList,List<String> mKeys){
+
+        public StudentsAdapter(List<Student> mStudentList, List<String> mKeys) {
             this.mStudentList = mStudentList;
             this.mKeys = mKeys;
         }
+
         @NonNull
         @Override
         public StudentItemView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -91,7 +95,7 @@ public class RecyclerView_Config {
 
         @Override
         public void onBindViewHolder(@NonNull StudentItemView holder, int position) {
-            holder.bind(mStudentList.get(position),mKeys.get(position));
+            holder.bind(mStudentList.get(position), mKeys.get(position));
         }
 
         @Override
