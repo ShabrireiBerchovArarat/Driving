@@ -8,7 +8,7 @@ import android.view.View;
 
 import java.util.List;
 
-public class StudentListActivity extends AppCompatActivity {
+public class StudentListActivity extends HomeMenuTemplateActivity {
     private RecyclerView recyclerView;
     String masterName;
 

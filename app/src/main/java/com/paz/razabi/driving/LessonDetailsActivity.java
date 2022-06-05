@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LessonDetailsActivity extends AppCompatActivity {
+public class LessonDetailsActivity extends HomeMenuTemplateActivity {
     private TextView tvCurrLessDis;
     private EditText etNewMonth, etNewDay, etNewHour;
     private Spinner new_sp;
@@ -97,8 +97,6 @@ public class LessonDetailsActivity extends AppCompatActivity {
 
                             }
                         });
-                        Intent j = new Intent(LessonDetailsActivity.this, HomeActivity.class);
-                        startActivity(j);
                     }
                 });
         builder2.setTitle("Delete")
@@ -128,8 +126,6 @@ public class LessonDetailsActivity extends AppCompatActivity {
 
                             }
                         });
-                        Intent j = new Intent(LessonDetailsActivity.this, HomeActivity.class);
-                        startActivity(j);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -169,9 +165,6 @@ public class LessonDetailsActivity extends AppCompatActivity {
 
                                                 }
                                             });
-                                            Intent i = new Intent(LessonDetailsActivity.this, HomeActivity.class);
-                                            startActivity(i);
-
                                         }
                                     }
                                 }
@@ -259,8 +252,6 @@ public class LessonDetailsActivity extends AppCompatActivity {
                                         }
                                     });
                                     RecordCoordinator.coordinateStudentRecords(lesson.getStudent());
-                                    Intent i = new Intent(LessonDetailsActivity.this, HomeActivity.class);
-                                    startActivity(i);
                                 }
                             }
                         }

@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScheduleActivity extends AppCompatActivity {
+public class ScheduleActivity extends HomeMenuTemplateActivity {
     private EditText etMonth, etDay, etHour;
     private Spinner spinner;
     private Button sc_bt;
@@ -69,69 +69,71 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            if(Verify.monthRange(etMonth.getText().toString()) && Verify.dayRange(etDay.getText().toString())){
+                    databaseReference2 = FirebaseDatabase.getInstance().getReference();
+                    databaseReference2.child("students").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                databaseReference2 = FirebaseDatabase.getInstance().getReference();
-                databaseReference2.child("students").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot childSnapshot2 : snapshot.getChildren()) {
+                                Student student = childSnapshot2.getValue(Student.class);
+                                if (student.getTeacher().equals(Globals.currTeacher)) {
+                                    if (student.getName().equals(spinner.getSelectedItem().toString())) {
+                                        Log.i("BBB", student.toString());
+                                        lesson.setStudent(student);
+                                        lesson.setDate(etDay.getText().toString() + "/" + etMonth.getText().toString() + " , " + etHour.getText().toString());
+                                        StringBuilder url = new StringBuilder();
+                                        url.append("https://wa.me/");
+                                        url.append(Formatting.formatPhone(lesson.getStudent().getPhone()));
+                                        url.append("?text=");
+                                        url.append(Formatting.encodeValue("New Lesson Has Been Scheduled For "));
+                                        url.append(Formatting.encodeValue(lesson.getDate()));
+                                        url.append(Formatting.encodeValue(" , Until Now You Had "));
+                                        url.append("" + lesson.getStudent().getLessonCount());
+                                        url.append(Formatting.encodeValue(" , And You Have To Pay "));
+                                        url.append("" + lesson.getStudent().getUnpaidLessonCount() * 170 + " Shekels.");
 
-                        for (DataSnapshot childSnapshot2 : snapshot.getChildren()) {
-                            Student student = childSnapshot2.getValue(Student.class);
-                            Log.i("BBB", student.getName() + " ," + spinner.getSelectedItem().toString());
-                            if (student.getTeacher().equals(Globals.currTeacher)) {
-                                if (student.getName().equals(spinner.getSelectedItem().toString())) {
-                                    Log.i("BBB", student.toString());
-                                    lesson.setStudent(student);
-                                    lesson.setDate(etDay.getText().toString() + "/" + etMonth.getText().toString() + " , " + etHour.getText().toString());
-                                    StringBuilder url = new StringBuilder();
-                                    url.append("https://wa.me/");
-                                    url.append(Formatting.formatPhone(lesson.getStudent().getPhone()));
-                                    url.append("?text=");
-                                    url.append(Formatting.encodeValue("New Lesson Has Been Scheduled For "));
-                                    url.append(Formatting.encodeValue(lesson.getDate()));
+                                        Uri uri = Uri.parse(url.toString());
+                                        Intent send = new Intent(Intent.ACTION_VIEW, uri);
 
-                                    Uri uri = Uri.parse(url.toString());
-                                    Intent send = new Intent(Intent.ACTION_VIEW, uri);
+                                        startActivity(send);
+                                        Log.i("LINK", url.toString());
 
-                                    startActivity(send);
-                                    Log.i("LINK", url.toString());
+                                        new LessFirebaseDBHelper().addLesson(lesson, new LessFirebaseDBHelper.LessDataStatus() {
+                                            @Override
+                                            public void LessDataIsLoaded(List<Lesson> lessons, List<String> keys) {
 
-                                    new LessFirebaseDBHelper().addLesson(lesson, new LessFirebaseDBHelper.LessDataStatus() {
-                                        @Override
-                                        public void LessDataIsLoaded(List<Lesson> lessons, List<String> keys) {
+                                            }
 
-                                        }
+                                            @Override
+                                            public void LessDataIsInserted() {
+                                                Toast.makeText(ScheduleActivity.this, "The Lesson Has Been Inserted Successfully", Toast.LENGTH_SHORT).show();
+                                            }
 
-                                        @Override
-                                        public void LessDataIsInserted() {
-                                            Toast.makeText(ScheduleActivity.this, "The Lesson Has Been Inserted Successfully", Toast.LENGTH_SHORT).show();
-                                        }
+                                            @Override
+                                            public void LessDataIsUpdated() {
 
-                                        @Override
-                                        public void LessDataIsUpdated() {
+                                            }
 
-                                        }
+                                            @Override
+                                            public void LessDataIsDeleted() {
 
-                                        @Override
-                                        public void LessDataIsDeleted() {
-
-                                        }
-                                    });
-                                    Intent i = new Intent(ScheduleActivity.this, HomeActivity.class);
-                                    startActivity(i);
+                                            }
+                                        });
+                                    }
                                 }
                             }
                         }
-                    }
 
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
-
-
+                        }
+                    });
+                }
+            else
+                Toast.makeText(ScheduleActivity.this, "Either The Day Or The Month Is Out Of Range", Toast.LENGTH_SHORT).show();
             }
         });
     }

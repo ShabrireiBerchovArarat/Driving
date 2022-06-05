@@ -5,4 +5,16 @@
         android:title="Logout"
         app:showAsAction="never">
     </item>
+    <item android:id="@+id/opHomePage"
+        android:title="Back To Home Page"
+        app:showAsAction="never">
+    </item>
+    <item android:id="@+id/opStartMusic"
+        android:title="Start Background Music"
+        app:showAsAction="never">
+    </item>
+    <item android:id="@+id/opStopMusic"
+        android:title="Stop Background Music"
+        app:showAsAction="never">
+    </item>
 </menu>

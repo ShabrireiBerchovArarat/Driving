@@ -8,7 +8,7 @@ import android.view.View;
 
 import java.util.List;
 
-public class LessonsListActivity extends AppCompatActivity {
+public class LessonsListActivity extends HomeMenuTemplateActivity {
     private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

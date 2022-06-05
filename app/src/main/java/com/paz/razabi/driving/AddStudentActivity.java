@@ -11,28 +11,18 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class AddStudentActivity extends AppCompatActivity {
+public class AddStudentActivity extends HomeMenuTemplateActivity {
     private EditText etName;
     private EditText etID;
     private EditText etPhone;
     private EditText etAddress;
     private Button addBt;
-//    private  int c1 = 1;
     String masterName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
-//        if(savedInstanceState == null) {
-//            Bundle extras = getIntent().getExtras();
-//            if (extras == null) {
-//                masterName = null;
-//            } else {
-//                masterName = extras.getString("STRING_I_NEED");
-//            }
-//        }else {
-//            masterName = (String) savedInstanceState.getSerializable("STRING_I_NEED");
-//        }
+
         masterName = Globals.currTeacher;
         etName = findViewById(R.id.etName);
         etID = findViewById(R.id.etID);
@@ -72,10 +62,6 @@ public class AddStudentActivity extends AppCompatActivity {
 
                     }
                 });
-                Intent i = new Intent(AddStudentActivity.this , HomeActivity.class);
-//                i.putExtra("INT_I_NEED", c1);
-//                i.putExtra("STRING_I_NEED", masterName);
-                startActivity(i);
             }
         });
     }

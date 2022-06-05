@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class StudentDetailsActivity extends AppCompatActivity {
+public class StudentDetailsActivity extends HomeMenuTemplateActivity {
     private EditText etName, etPhone, etID, etAddress, etLC, etUL;
     private Button up_bt, del_bt;
     private String key, name, phone, id, address, teacher;
@@ -79,8 +79,6 @@ public class StudentDetailsActivity extends AppCompatActivity {
                     }
                 });
                 RecordCoordinator.coordinateLessonRecords(student);
-                Intent i = new Intent(StudentDetailsActivity.this , HomeActivity.class);
-                startActivity(i);
             }
         });
         del_bt.setOnClickListener(new View.OnClickListener() {
@@ -108,10 +106,6 @@ public class StudentDetailsActivity extends AppCompatActivity {
 
                     }
                 });
-                Intent i = new Intent(StudentDetailsActivity.this , HomeActivity.class);
-//                i.putExtra("INT_I_NEED", c1);
-//                i.putExtra("STRING_I_NEED", teacher);
-                startActivity(i);
             }
         });
     }

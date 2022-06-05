@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
         // Else, continue with sign in/up
 
     }
-
     private void restoreCreds() {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
@@ -71,30 +70,29 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signUp(View view) {
+
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         cbRemember = findViewById(R.id.cbRemember);
-
-        if (cbRemember.isChecked()) {
-            mEditor.putString("saved_email", etEmail.getText().toString());
-            mEditor.putString("saved_password", etPassword.getText().toString());
-            mEditor.putBoolean("save_creds", true);
-        } else {
-            mEditor.putString("saved_email", EMPTY_OR_MISSING_SP);
-            mEditor.putString("saved_password", EMPTY_OR_MISSING_SP);
-            mEditor.putBoolean("save_creds", false);
-        }
-        mEditor.apply();
-
-        mAuth.createUserWithEmailAndPassword(etEmail.getText().toString() , etPassword.getText().toString())
-        .addOnCompleteListener(LoginActivity.this, task -> {
-            if(task.isSuccessful()){
-                startActivity(new Intent(LoginActivity.this , HomeActivity.class));
+            if (cbRemember.isChecked()) {
+                mEditor.putString("saved_email", etEmail.getText().toString());
+                mEditor.putString("saved_password", etPassword.getText().toString());
+                mEditor.putBoolean("save_creds", true);
+            } else {
+                mEditor.putString("saved_email", EMPTY_OR_MISSING_SP);
+                mEditor.putString("saved_password", EMPTY_OR_MISSING_SP);
+                mEditor.putBoolean("save_creds", false);
             }
-            else{
-                Toast.makeText(LoginActivity.this , "Sign Up Failed" , Toast.LENGTH_LONG).show();
-            }
-        });
+            mEditor.apply();
+
+            mAuth.createUserWithEmailAndPassword(etEmail.getText().toString(), etPassword.getText().toString())
+                    .addOnCompleteListener(LoginActivity.this, task -> {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Sign Up Failed", Toast.LENGTH_LONG).show();
+                        }
+                    });
 
     }
 
@@ -102,27 +100,28 @@ public class LoginActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
 
-        if (cbRemember.isChecked()) {
-            mEditor.putString("saved_email", etEmail.getText().toString());
-            mEditor.putString("saved_password", etPassword.getText().toString());
-            mEditor.putBoolean("save_creds", true);
-        } else {
-            mEditor.putString("saved_email", EMPTY_OR_MISSING_SP);
-            mEditor.putString("saved_password", EMPTY_OR_MISSING_SP);
-            mEditor.putBoolean("save_creds", false);
-        }
-        mEditor.apply();
-        mAuth.signInWithEmailAndPassword(etEmail.getText().toString() , etPassword.getText().toString())
-                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            startActivity(new Intent(LoginActivity.this , HomeActivity.class));
+            if (cbRemember.isChecked()) {
+                mEditor.putString("saved_email", etEmail.getText().toString());
+                mEditor.putString("saved_password", etPassword.getText().toString());
+                mEditor.putBoolean("save_creds", true);
+            } else {
+                mEditor.putString("saved_email", EMPTY_OR_MISSING_SP);
+                mEditor.putString("saved_password", EMPTY_OR_MISSING_SP);
+                mEditor.putBoolean("save_creds", false);
+            }
+            mEditor.apply();
+            mAuth.signInWithEmailAndPassword(etEmail.getText().toString(), etPassword.getText().toString())
+                    .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Sign In Failed", Toast.LENGTH_LONG).show();
+                            }
                         }
-                        else{
-                            Toast.makeText(LoginActivity.this , "Sign In Failed" , Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+                    });
+
     }
+
 }

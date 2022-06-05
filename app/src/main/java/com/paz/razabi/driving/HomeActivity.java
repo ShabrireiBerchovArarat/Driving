@@ -16,16 +16,6 @@ public class HomeActivity extends HomeMenuTemplateActivity implements ExampleDia
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-//        if(savedInstanceState == null) {
-//            Bundle extras = getIntent().getExtras();
-//            if (extras == null) {
-//                c = 0;
-//            } else {
-//                c = extras.getInt("INT_I_NEED");
-//                masterName = extras.getString("STRING_I_NEED");
-//                tvWellMaster.setText("Wellcome " + masterName);
-//            }
-//        }
         tvWellMaster = findViewById(R.id.tv_well_master);
         tvSL = findViewById(R.id.tvSL);
         tvAAS = findViewById(R.id.tvAAS);
