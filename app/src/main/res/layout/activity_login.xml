@@ -9,13 +9,13 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="219dp"
-        android:layout_height="54dp"
+        android:layout_width="298dp"
+        android:layout_height="60dp"
         android:fontFamily="@font/bad_script"
         android:gravity="center"
         android:text="Welcome To Driving"
         android:textAlignment="center"
-        android:textSize="28sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

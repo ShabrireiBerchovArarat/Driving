@@ -1,5 +1,6 @@
 package com.paz.razabi.driving;
 //
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +42,19 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson_details);
+        key = getIntent().getStringExtra("less_key");
+        Log.i("BBBaaaa", key);
+        currName = getIntent().getStringExtra("less_name");
+        currDate = getIntent().getStringExtra("less_date");
+        tvCurrLessDis = findViewById(R.id.tvCurrLessDis);
+        etNewMonth = findViewById(R.id.etNewMonth);
+        etNewDay = findViewById(R.id.etNewDay);
+        etNewHour = findViewById(R.id.etNewHour);
+        new_sp = findViewById(R.id.new_sp);
+        up_less_bt = findViewById(R.id.up_less_bt);
+        del_less_bt = findViewById(R.id.del_less_bt);
+        tvCurrLessDis.setText("The Current Lesson Is For " + currName + " at " + currDate);
+        names = new ArrayList<>();
         builder1 = new AlertDialog.Builder(LessonDetailsActivity.this);
         builder2 = new AlertDialog.Builder(LessonDetailsActivity.this);
         builder1.setTitle("Delete")
@@ -54,7 +68,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
                             for (DataSnapshot childSnapshot2 : snapshot.getChildren()) {
                                 Student student = childSnapshot2.getValue(Student.class);
                                 Log.i("BBB", student.getName() + " ," + new_sp.getSelectedItem().toString());
-                                if (student.getTeacher().equals(Globals.currTeacher)){
+                                if (student.getTeacher().equals(Globals.currTeacher)) {
                                     if (student.getName().equals(new_sp.getSelectedItem().toString())) {
                                         Log.i("BBB", student.toString());
                                         student.setLessonCount((student.getLessonCount() + 1));
@@ -63,7 +77,6 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
                                 }
                             }
                         }
-
 
 
                         @Override
@@ -93,7 +106,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
 
                             @Override
                             public void LessDataIsDeleted() {
-                                Toast.makeText(LessonDetailsActivity.this , "The Lesson Has Been Deleted Successfully!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LessonDetailsActivity.this, "The Lesson Has Been Deleted Successfully!", Toast.LENGTH_LONG).show();
 
                             }
                         });
@@ -122,7 +135,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
 
                             @Override
                             public void LessDataIsDeleted() {
-                                Toast.makeText(LessonDetailsActivity.this , "The Lesson Has Been Deleted Successfully!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LessonDetailsActivity.this, "The Lesson Has Been Deleted Successfully!", Toast.LENGTH_LONG).show();
 
                             }
                         });
@@ -139,7 +152,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
                                 for (DataSnapshot childSnapshot2 : snapshot.getChildren()) {
                                     Student student = childSnapshot2.getValue(Student.class);
                                     Log.i("BBB", student.getName() + " ," + new_sp.getSelectedItem().toString());
-                                    if (student.getTeacher().equals(Globals.currTeacher)){
+                                    if (student.getTeacher().equals(Globals.currTeacher)) {
                                         if (student.getName().equals(new_sp.getSelectedItem().toString())) {
                                             Log.i("BBB", student.toString());
                                             student.setUnpaidLessonCount((student.getUnpaidLessonCount() + 1));
@@ -161,7 +174,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
 
                                                 @Override
                                                 public void LessDataIsDeleted() {
-                                                    Toast.makeText(LessonDetailsActivity.this , "The Lesson Has Been Deleted Successfully!", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(LessonDetailsActivity.this, "The Lesson Has Been Deleted Successfully!", Toast.LENGTH_LONG).show();
 
                                                 }
                                             });
@@ -169,7 +182,6 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
                                     }
                                 }
                             }
-
 
 
                             @Override
@@ -180,18 +192,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
                     }
                 });
 
-        key = getIntent().getStringExtra("less_key");
-        currName = getIntent().getStringExtra("less_name");
-        currDate = getIntent().getStringExtra("less_date");
-        tvCurrLessDis = findViewById(R.id.tvCurrLessDis);
-        etNewMonth = findViewById(R.id.etNewMonth);
-        etNewDay = findViewById(R.id.etNewDay);
-        etNewHour = findViewById(R.id.etNewHour);
-        new_sp = findViewById(R.id.new_sp);
-        up_less_bt = findViewById(R.id.up_less_bt);
-        del_less_bt = findViewById(R.id.del_less_bt);
-        tvCurrLessDis.setText("The Current Lesson Is For " + currName + " at "+ currDate);
-        names = new ArrayList<>();
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("students").addValueEventListener(new ValueEventListener() {
             @Override
@@ -200,7 +201,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     Student student = childSnapshot.getValue(Student.class);
                     String spinnerName;
-                    if (student.getTeacher().equals(Globals.currTeacher)){
+                    if (student.getTeacher().equals(Globals.currTeacher)) {
                         spinnerName = student.getName();
                         names.add(spinnerName);
                     }
@@ -209,6 +210,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 new_sp.setAdapter(arrayAdapter);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -225,7 +227,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
                         for (DataSnapshot childSnapshot2 : snapshot.getChildren()) {
                             Student student = childSnapshot2.getValue(Student.class);
                             Log.i("BBB", student.getName() + " ," + new_sp.getSelectedItem().toString());
-                            if (student.getTeacher().equals(Globals.currTeacher)){
+                            if (student.getTeacher().equals(Globals.currTeacher)) {
                                 if (student.getName().equals(new_sp.getSelectedItem().toString())) {
                                     Log.i("BBB", student.toString());
                                     lesson.setStudent(student);
@@ -243,7 +245,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
 
                                         @Override
                                         public void LessDataIsUpdated() {
-                                        Toast.makeText(LessonDetailsActivity.this , "The Lesson Has Been Updated Successfully!", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(LessonDetailsActivity.this, "The Lesson Has Been Updated Successfully!", Toast.LENGTH_LONG).show();
                                         }
 
                                         @Override
@@ -256,6 +258,7 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
                             }
                         }
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
