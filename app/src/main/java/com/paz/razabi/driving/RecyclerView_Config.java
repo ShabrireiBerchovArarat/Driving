@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-//Step_6
+// step 6
 public class RecyclerView_Config {
-    // step_7
+    // step 7
     private Context mContext;
     private StudentsAdapter mStudentAdapters;
 
-    // step_8
+    // step 8
     public void setConfig(RecyclerView recyclerView, Context context, List<Student> students, List<String> keys) {
         mContext = context;
         mStudentAdapters = new StudentsAdapter(students, keys);
@@ -27,7 +27,7 @@ public class RecyclerView_Config {
         recyclerView.setAdapter(mStudentAdapters);
     }
 
-    // step_9
+    // step 9
     class StudentItemView extends RecyclerView.ViewHolder {
         private TextView mName;
         private TextView mID;
@@ -77,7 +77,7 @@ public class RecyclerView_Config {
 
     }
 
-    // step_10
+    // step 10
     class StudentsAdapter extends RecyclerView.Adapter<StudentItemView> {
         private List<Student> mStudentList;
         private List<String> mKeys;
@@ -103,5 +103,4 @@ public class RecyclerView_Config {
             return mStudentList.size();
         }
     }
-
 }

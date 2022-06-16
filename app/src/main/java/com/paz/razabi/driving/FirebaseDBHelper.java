@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FirebaseDBHelper {
-    // step_2
+    // step 2
     private FirebaseDatabase  mDatabase;
     private DatabaseReference mRefrenceStudents;
     private List<Student> students = new ArrayList<>();

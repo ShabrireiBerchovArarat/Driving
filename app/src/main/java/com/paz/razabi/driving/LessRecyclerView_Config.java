@@ -27,7 +27,7 @@ public class LessRecyclerView_Config {
 
     }
 
-    // step_9
+    // step 9
     class LessonItemView extends RecyclerView.ViewHolder {
         private TextView mSName;
         private TextView mDate;

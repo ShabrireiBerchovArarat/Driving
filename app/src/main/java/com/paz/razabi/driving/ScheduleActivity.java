@@ -40,6 +40,7 @@ public class ScheduleActivity extends HomeMenuTemplateActivity {
         etDay = findViewById(R.id.etDay);
         etHour = findViewById(R.id.etHour);
         sc_bt = findViewById(R.id.sc_bt);
+
         names = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("students").addValueEventListener(new ValueEventListener() {
@@ -65,11 +66,12 @@ public class ScheduleActivity extends HomeMenuTemplateActivity {
 
             }
         });
+
         sc_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-            if(Verify.monthRange(etMonth.getText().toString()) && Verify.dayRange(etDay.getText().toString())){
+            if(Verify.monthRange(etMonth.getText().toString()) && Verify.dayRange(etDay.getText().toString())) {
                     databaseReference2 = FirebaseDatabase.getInstance().getReference();
                     databaseReference2.child("students").addValueEventListener(new ValueEventListener() {
                         @Override

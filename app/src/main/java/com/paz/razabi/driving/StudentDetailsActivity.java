@@ -20,29 +20,35 @@ public class StudentDetailsActivity extends HomeMenuTemplateActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_details);
+
         key = getIntent().getStringExtra("key");
         name = getIntent().getStringExtra("name");
         phone = getIntent().getStringExtra("phone");
         id = getIntent().getStringExtra("id");
         address = getIntent().getStringExtra("address");
+
         Bundle extras = getIntent().getExtras();
         lc = extras.getInt("lc");
         ul = extras.getInt("ul");
+
         etName = findViewById(R.id.etName);
         etPhone = findViewById(R.id.etPhone);
         etID = findViewById(R.id.etID);
         etAddress = findViewById(R.id.etAddress);
         etLC = findViewById(R.id.etLC);
         etUL = findViewById(R.id.etUL);
+        up_bt = findViewById(R.id.up_bt);
+        del_bt = findViewById(R.id.del_bt);
+
         etName.setText(name);
         etPhone.setText(phone);
         etID.setText(id);
         etAddress.setText(address);
         etLC.setText("" + lc);
         etUL.setText("" + ul);
+
         teacher = Globals.currTeacher;
-        up_bt = findViewById(R.id.up_bt);
-        del_bt = findViewById(R.id.del_bt);
+
 
         up_bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,10 +108,10 @@ public class StudentDetailsActivity extends HomeMenuTemplateActivity {
 
                     @Override
                     public void DataIsDeleted() {
-                    Toast.makeText(StudentDetailsActivity.this, "The Student Has Been Deleted Successfully!", Toast.LENGTH_LONG).show();
-
+                        Toast.makeText(StudentDetailsActivity.this, "The Student Has Been Deleted Successfully!", Toast.LENGTH_LONG).show();
                     }
                 });
+                RecordCoordinator.deleteLessonRecords(id);
             }
         });
     }

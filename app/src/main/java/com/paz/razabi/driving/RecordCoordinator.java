@@ -95,4 +95,48 @@ public class RecordCoordinator {
             }
         });
     }
+
+    public static void deleteLessonRecords(String s) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("lessons").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                    Lesson lesson = childSnapshot.getValue(Lesson.class);
+                    String key;
+                    if (lesson.getStudent().getTeacher().equals(Globals.currTeacher)) {
+                        if (lesson.getStudent().getId().equals(s)) {
+                            key = childSnapshot.getKey();
+                            new LessFirebaseDBHelper().deleteLesson(key, new LessFirebaseDBHelper.LessDataStatus() {
+                                @Override
+                                public void LessDataIsLoaded(List<Lesson> lessons, List<String> keys) {
+
+                                }
+
+                                @Override
+                                public void LessDataIsInserted() {
+
+                                }
+
+                                @Override
+                                public void LessDataIsUpdated() {
+
+                                }
+
+                                @Override
+                                public void LessDataIsDeleted() {
+
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }
