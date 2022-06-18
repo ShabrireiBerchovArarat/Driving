@@ -71,7 +71,7 @@ public class ScheduleActivity extends HomeMenuTemplateActivity {
             @Override
             public void onClick(View view) {
 
-            if(Verify.monthRange(etMonth.getText().toString()) && Verify.dayRange(etDay.getText().toString())) {
+            if(Verify.monthRange(etMonth.getText().toString()) && Verify.dayRange(etDay.getText().toString()) && Verify.isTimeValid(etHour.getText().toString())) {
                     databaseReference2 = FirebaseDatabase.getInstance().getReference();
                     databaseReference2.child("students").addValueEventListener(new ValueEventListener() {
                         @Override
@@ -135,7 +135,7 @@ public class ScheduleActivity extends HomeMenuTemplateActivity {
                     });
                 }
             else
-                Toast.makeText(ScheduleActivity.this, "Either The Day Or The Month Is Out Of Range", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ScheduleActivity.this, "Either The Day Or The Month Is Out Of Range, Or The Time Is Incorrect", Toast.LENGTH_SHORT).show();
             }
         });
     }

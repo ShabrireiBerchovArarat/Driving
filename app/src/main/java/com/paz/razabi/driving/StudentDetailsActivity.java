@@ -53,38 +53,40 @@ public class StudentDetailsActivity extends HomeMenuTemplateActivity {
         up_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               nLc = Integer.parseInt(etLC.getText().toString());
-               nUl = Integer.parseInt(etUL.getText().toString());
-                Student student = new Student();
-                student.setName(etName.getText().toString());
-                student.setPhone(etPhone.getText().toString());
-                student.setId(etID.getText().toString());
-                student.setAddress(etAddress.getText().toString());
-                student.setLessonCount(nLc);
-                student.setUnpaidLessonCount(nUl);
-                student.setTeacher(teacher);
-                new FirebaseDBHelper().updateStudent(key, student, new FirebaseDBHelper.DataStatus() {
-                    @Override
-                    public void DataIsLoaded(List<Student> students, List<String> keys) {
+                if (!etName.getText().toString().isEmpty() && !etAddress.getText().toString().isEmpty() && Verify.phoneRange(etPhone.getText().toString()) && Verify.idRange(etID.getText().toString())) {
+                    nLc = Integer.parseInt(etLC.getText().toString());
+                    nUl = Integer.parseInt(etUL.getText().toString());
+                    Student student = new Student();
+                    student.setName(etName.getText().toString());
+                    student.setPhone(etPhone.getText().toString());
+                    student.setId(etID.getText().toString());
+                    student.setAddress(etAddress.getText().toString());
+                    student.setLessonCount(nLc);
+                    student.setUnpaidLessonCount(nUl);
+                    student.setTeacher(teacher);
+                    new FirebaseDBHelper().updateStudent(key, student, new FirebaseDBHelper.DataStatus() {
+                        @Override
+                        public void DataIsLoaded(List<Student> students, List<String> keys) {
 
-                    }
+                        }
 
-                    @Override
-                    public void DataIsInserted() {
+                        @Override
+                        public void DataIsInserted() {
 
-                    }
+                        }
 
-                    @Override
-                    public void DataIsUpdated() {
-                        Toast.makeText(StudentDetailsActivity.this, "The Student Has Been Updated Successfully!", Toast.LENGTH_LONG).show();
-                    }
+                        @Override
+                        public void DataIsUpdated() {
+                            Toast.makeText(StudentDetailsActivity.this, "The Student Has Been Updated Successfully!", Toast.LENGTH_LONG).show();
+                        }
 
-                    @Override
-                    public void DataIsDeleted() {
+                        @Override
+                        public void DataIsDeleted() {
 
-                    }
-                });
-                RecordCoordinator.coordinateLessonRecords(student);
+                        }
+                    });
+                    RecordCoordinator.coordinateLessonRecords(student);
+                }
             }
         });
         del_bt.setOnClickListener(new View.OnClickListener() {

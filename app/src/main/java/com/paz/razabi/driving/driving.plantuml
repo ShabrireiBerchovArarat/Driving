@@ -1,0 +1,410 @@
+@startuml
+
+title __DRIVING's Class Diagram__\n
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.AddStudentActivity {
+        ~ masterName : String
+        - addBt : Button
+        - etAddress : EditText
+        - etID : EditText
+        - etName : EditText
+        - etPhone : EditText
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.ExampleDialog {
+        - etMaster : EditText
+        + onAttach()
+        + onCreateDialog()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    interface com.paz.razabi.driving.ExampleDialog.ExampleDialogListener {
+        {abstract} + applyText()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.FirebaseDBHelper {
+        - mDatabase : FirebaseDatabase
+        - mRefrenceStudents : DatabaseReference
+        - students : List<Student>
+        + FirebaseDBHelper()
+        + addStudent()
+        + deleteStudent()
+        + readStudents()
+        + updateStudent()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    interface com.paz.razabi.driving.FirebaseDBHelper.DataStatus {
+        {abstract} + DataIsDeleted()
+        {abstract} + DataIsInserted()
+        {abstract} + DataIsLoaded()
+        {abstract} + DataIsUpdated()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.Formatting {
+        {static} ~ encodeValue()
+        {static} ~ formatPhone()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.Globals {
+        {static} + currTeacher : String
+        {static} + firstEnter : boolean
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.HomeActivity {
+        - bt : Button
+        - masterName : String
+        - tvAAS : TextView
+        - tvLL : TextView
+        - tvSAL : TextView
+        - tvSL : TextView
+        - tvWellMaster : TextView
+        + addStudent()
+        + applyText()
+        + lList()
+        + sLesson()
+        + sList()
+        # onCreate()
+        - openDialog()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.HomeMenuTemplateActivity {
+        - serviceIntent : Intent
+        + onCreateOptionsMenu()
+        + onOptionsItemSelected()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.LessFirebaseDBHelper {
+        - lessons : List<Lesson>
+        - mDatabase : FirebaseDatabase
+        - mRefrenceLessons : DatabaseReference
+        + LessFirebaseDBHelper()
+        + addLesson()
+        + deleteLesson()
+        + readLessons()
+        + updateLesson()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    interface com.paz.razabi.driving.LessFirebaseDBHelper.LessDataStatus {
+        {abstract} + LessDataIsDeleted()
+        {abstract} + LessDataIsInserted()
+        {abstract} + LessDataIsLoaded()
+        {abstract} + LessDataIsUpdated()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.LessRecyclerView_Config {
+        - mContext : Context
+        + setConfig()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.LessRecyclerView_Config.LessonItemView {
+        - key : String
+        - mDate : TextView
+        - mSName : TextView
+        + LessonItemView()
+        + lessBind()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.LessRecyclerView_Config.LessonsAdapter {
+        - mKeys : List<String>
+        - mLessonList : List<Lesson>
+        + LessonsAdapter()
+        + getItemCount()
+        + onBindViewHolder()
+        + onCreateViewHolder()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.Lesson {
+        - date : String
+        + Lesson()
+        + getDate()
+        + getStudent()
+        + setDate()
+        + setStudent()
+        + toString()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.LessonDetailsActivity {
+        - builder1 : Builder
+        - builder2 : Builder
+        - currDate : String
+        - currName : String
+        - databaseReference : DatabaseReference
+        - databaseReference2 : DatabaseReference
+        - del_less_bt : Button
+        - etNewDay : EditText
+        - etNewHour : EditText
+        - etNewMonth : EditText
+        - key : String
+        - names : List<String>
+        - newDate : String
+        - new_sp : Spinner
+        - tvCurrLessDis : TextView
+        - up_less_bt : Button
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.LessonsListActivity {
+        - recyclerView : RecyclerView
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.LoginActivity {
+        - EMPTY_OR_MISSING_SP : String
+        - bSignIn : Button
+        - bSignUp : Button
+        - cbRemember : CheckBox
+        - etEmail : EditText
+        - etPassword : EditText
+        - mAuth : FirebaseAuth
+        - mEditor : Editor
+        - mPreferences : SharedPreferences
+        + onStart()
+        + signIn()
+        + signUp()
+        # onCreate()
+        - restoreCreds()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.MainActivity {
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.MyService {
+        - mMediaPlayer : MediaPlayer
+        + onBind()
+        + onCreate()
+        + onDestroy()
+        + onStart()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.RecordCoordinator {
+        {static} + coordinateLessonRecords()
+        {static} + coordinateStudentRecords()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.RecyclerView_Config {
+        - mContext : Context
+        + setConfig()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.RecyclerView_Config.StudentItemView {
+        - key : String
+        - mAdress : TextView
+        - mID : TextView
+        - mLC : TextView
+        - mName : TextView
+        - mPhone : TextView
+        - mUL : TextView
+        + StudentItemView()
+        + bind()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.RecyclerView_Config.StudentsAdapter {
+        - mKeys : List<String>
+        - mStudentList : List<Student>
+        + StudentsAdapter()
+        + getItemCount()
+        + onBindViewHolder()
+        + onCreateViewHolder()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.ScheduleActivity {
+        - databaseReference : DatabaseReference
+        - databaseReference2 : DatabaseReference
+        - etDay : EditText
+        - etHour : EditText
+        - etMonth : EditText
+        - names : List<String>
+        - sc_bt : Button
+        - spinner : Spinner
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.Student {
+        - Name : String
+        - address : String
+        - id : String
+        - lessonCount : int
+        - phone : String
+        - teacher : String
+        - unpaidLessonCount : int
+        + Student()
+        + Student()
+        + getAddress()
+        + getId()
+        + getLessonCount()
+        + getName()
+        + getPhone()
+        + getTeacher()
+        + getUnpaidLessonCount()
+        + setAddress()
+        + setId()
+        + setLessonCount()
+        + setName()
+        + setPhone()
+        + setTeacher()
+        + setUnpaidLessonCount()
+        + toString()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.StudentDetailsActivity {
+        - address : String
+        - del_bt : Button
+        - etAddress : EditText
+        - etID : EditText
+        - etLC : EditText
+        - etName : EditText
+        - etPhone : EditText
+        - etUL : EditText
+        - id : String
+        - key : String
+        - lc : int
+        - nLc : int
+        - nUl : int
+        - name : String
+        - phone : String
+        - teacher : String
+        - ul : int
+        - up_bt : Button
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.StudentListActivity {
+        ~ masterName : String
+        - recyclerView : RecyclerView
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.paz.razabi.driving {
+    class com.paz.razabi.driving.Verify {
+        {static} + dayRange()
+        {static} + monthRange()
+    }
+  }
+  
+
+  com.paz.razabi.driving.AddStudentActivity -up-|> com.paz.razabi.driving.HomeMenuTemplateActivity
+  com.paz.razabi.driving.ExampleDialog -up-|> androidx.appcompat.app.AppCompatDialogFragment
+  com.paz.razabi.driving.ExampleDialog o-- com.paz.razabi.driving.ExampleDialog.ExampleDialogListener : listener
+  com.paz.razabi.driving.ExampleDialog +-down- com.paz.razabi.driving.ExampleDialog.ExampleDialogListener
+  com.paz.razabi.driving.FirebaseDBHelper +-down- com.paz.razabi.driving.FirebaseDBHelper.DataStatus
+  com.paz.razabi.driving.HomeActivity .up.|> com.paz.razabi.driving.ExampleDialog.ExampleDialogListener
+  com.paz.razabi.driving.HomeActivity -up-|> com.paz.razabi.driving.HomeMenuTemplateActivity
+  com.paz.razabi.driving.HomeMenuTemplateActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.paz.razabi.driving.LessFirebaseDBHelper +-down- com.paz.razabi.driving.LessFirebaseDBHelper.LessDataStatus
+  com.paz.razabi.driving.LessRecyclerView_Config o-- com.paz.razabi.driving.LessRecyclerView_Config.LessonsAdapter : mLessonAdapters
+  com.paz.razabi.driving.LessRecyclerView_Config +-down- com.paz.razabi.driving.LessRecyclerView_Config.LessonItemView
+  com.paz.razabi.driving.LessRecyclerView_Config +-down- com.paz.razabi.driving.LessRecyclerView_Config.LessonsAdapter
+  com.paz.razabi.driving.LessRecyclerView_Config.LessonItemView -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.paz.razabi.driving.LessRecyclerView_Config.LessonsAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.paz.razabi.driving.Lesson o-- com.paz.razabi.driving.Student : student
+  com.paz.razabi.driving.LessonDetailsActivity -up-|> com.paz.razabi.driving.HomeMenuTemplateActivity
+  com.paz.razabi.driving.LessonDetailsActivity o-- com.paz.razabi.driving.Lesson : lesson
+  com.paz.razabi.driving.LessonDetailsActivity o-- com.paz.razabi.driving.Student : s1
+  com.paz.razabi.driving.LessonsListActivity -up-|> com.paz.razabi.driving.HomeMenuTemplateActivity
+  com.paz.razabi.driving.LoginActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.paz.razabi.driving.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.paz.razabi.driving.MyService -up-|> android.app.Service
+  com.paz.razabi.driving.RecyclerView_Config o-- com.paz.razabi.driving.RecyclerView_Config.StudentsAdapter : mStudentAdapters
+  com.paz.razabi.driving.RecyclerView_Config +-down- com.paz.razabi.driving.RecyclerView_Config.StudentItemView
+  com.paz.razabi.driving.RecyclerView_Config +-down- com.paz.razabi.driving.RecyclerView_Config.StudentsAdapter
+  com.paz.razabi.driving.RecyclerView_Config.StudentItemView -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.paz.razabi.driving.RecyclerView_Config.StudentsAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.paz.razabi.driving.ScheduleActivity -up-|> com.paz.razabi.driving.HomeMenuTemplateActivity
+  com.paz.razabi.driving.ScheduleActivity o-- com.paz.razabi.driving.Lesson : lesson
+  com.paz.razabi.driving.StudentDetailsActivity -up-|> com.paz.razabi.driving.HomeMenuTemplateActivity
+  com.paz.razabi.driving.StudentListActivity -up-|> com.paz.razabi.driving.HomeMenuTemplateActivity
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

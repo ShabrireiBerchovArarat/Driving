@@ -33,35 +33,37 @@ public class AddStudentActivity extends HomeMenuTemplateActivity {
         addBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Student student = new Student();
-                student.setName(etName.getText().toString());
-                student.setId(etID.getText().toString());
-                student.setPhone(etPhone.getText().toString());
-                student.setAddress(etAddress.getText().toString());
-                student.setLessonCount(0);
-                student.setUnpaidLessonCount(0);
-                student.setTeacher(masterName);
-                new FirebaseDBHelper().addStudent(student, new FirebaseDBHelper.DataStatus() {
-                    @Override
-                    public void DataIsLoaded(List<Student> students, List<String> keys) {
+                if (!etName.getText().toString().isEmpty() && !etAddress.getText().toString().isEmpty() && Verify.phoneRange(etPhone.getText().toString()) && Verify.idRange(etID.getText().toString())) {
+                    Student student = new Student();
+                    student.setName(etName.getText().toString());
+                    student.setId(etID.getText().toString());
+                    student.setPhone(etPhone.getText().toString());
+                    student.setAddress(etAddress.getText().toString());
+                    student.setLessonCount(0);
+                    student.setUnpaidLessonCount(0);
+                    student.setTeacher(masterName);
+                    new FirebaseDBHelper().addStudent(student, new FirebaseDBHelper.DataStatus() {
+                        @Override
+                        public void DataIsLoaded(List<Student> students, List<String> keys) {
 
-                    }
+                        }
 
-                    @Override
-                    public void DataIsInserted() {
-                        Toast.makeText(AddStudentActivity.this, "The Student Has Been Inserted Successfully", Toast.LENGTH_SHORT).show();
-                    }
+                        @Override
+                        public void DataIsInserted() {
+                            Toast.makeText(AddStudentActivity.this, "The Student Has Been Inserted Successfully", Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void DataIsUpdated() {
+                        @Override
+                        public void DataIsUpdated() {
 
-                    }
+                        }
 
-                    @Override
-                    public void DataIsDeleted() {
+                        @Override
+                        public void DataIsDeleted() {
 
-                    }
-                });
+                        }
+                    });
+                }
             }
         });
     }

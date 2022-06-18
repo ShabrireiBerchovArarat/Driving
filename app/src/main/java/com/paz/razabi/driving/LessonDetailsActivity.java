@@ -1,5 +1,4 @@
 package com.paz.razabi.driving;
-//
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -43,7 +42,6 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson_details);
         key = getIntent().getStringExtra("less_key");
-        Log.i("BBBaaaa", key);
         currName = getIntent().getStringExtra("less_name");
         currDate = getIntent().getStringExtra("less_date");
         tvCurrLessDis = findViewById(R.id.tvCurrLessDis);
@@ -219,53 +217,55 @@ public class LessonDetailsActivity extends HomeMenuTemplateActivity {
         up_less_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference2 = FirebaseDatabase.getInstance().getReference();
-                databaseReference2.child("students").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (Verify.monthRange(etNewMonth.getText().toString()) && Verify.dayRange(etNewDay.getText().toString()) && Verify.isTimeValid(etNewHour.getText().toString())) {
 
-                        for (DataSnapshot childSnapshot2 : snapshot.getChildren()) {
-                            Student student = childSnapshot2.getValue(Student.class);
-                            Log.i("BBB", student.getName() + " ," + new_sp.getSelectedItem().toString());
-                            if (student.getTeacher().equals(Globals.currTeacher)) {
-                                if (student.getName().equals(new_sp.getSelectedItem().toString())) {
-                                    Log.i("BBB", student.toString());
-                                    lesson.setStudent(student);
-                                    lesson.setDate(etNewDay.getText().toString() + "/" + etNewMonth.getText().toString() + " , " + etNewHour.getText().toString());
-                                    new LessFirebaseDBHelper().updateLesson(key, lesson, new LessFirebaseDBHelper.LessDataStatus() {
-                                        @Override
-                                        public void LessDataIsLoaded(List<Lesson> lessons, List<String> keys) {
+                    databaseReference2 = FirebaseDatabase.getInstance().getReference();
+                    databaseReference2.child("students").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                        }
+                            for (DataSnapshot childSnapshot2 : snapshot.getChildren()) {
+                                Student student = childSnapshot2.getValue(Student.class);
+                                Log.i("BBB", student.getName() + " ," + new_sp.getSelectedItem().toString());
+                                if (student.getTeacher().equals(Globals.currTeacher)) {
+                                    if (student.getName().equals(new_sp.getSelectedItem().toString())) {
+                                        Log.i("BBB", student.toString());
+                                        lesson.setStudent(student);
+                                        lesson.setDate(etNewDay.getText().toString() + "/" + etNewMonth.getText().toString() + " , " + etNewHour.getText().toString());
+                                        new LessFirebaseDBHelper().updateLesson(key, lesson, new LessFirebaseDBHelper.LessDataStatus() {
+                                            @Override
+                                            public void LessDataIsLoaded(List<Lesson> lessons, List<String> keys) {
 
-                                        @Override
-                                        public void LessDataIsInserted() {
+                                            }
 
-                                        }
+                                            @Override
+                                            public void LessDataIsInserted() {
 
-                                        @Override
-                                        public void LessDataIsUpdated() {
-                                            Toast.makeText(LessonDetailsActivity.this, "The Lesson Has Been Updated Successfully!", Toast.LENGTH_LONG).show();
-                                        }
+                                            }
 
-                                        @Override
-                                        public void LessDataIsDeleted() {
+                                            @Override
+                                            public void LessDataIsUpdated() {
+                                                Toast.makeText(LessonDetailsActivity.this, "The Lesson Has Been Updated Successfully!", Toast.LENGTH_LONG).show();
+                                            }
 
-                                        }
-                                    });
-                                    RecordCoordinator.coordinateStudentRecords(lesson.getStudent());
+                                            @Override
+                                            public void LessDataIsDeleted() {
+
+                                            }
+                                        });
+                                        RecordCoordinator.coordinateStudentRecords(lesson.getStudent());
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
 
-
+                }
             }
         });
         del_less_bt.setOnClickListener(new View.OnClickListener() {
